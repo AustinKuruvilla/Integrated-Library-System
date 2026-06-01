@@ -11,3 +11,4 @@ An ILS typically connects several distinct modules:
 - Increased Efficiency: Automates repetitive tasks like overdue notices, renewals, and item check-ins.
 - Improved Patron Experience: Allows users to place holds, renew items, and access digital resources remotely via web portals or kiosks.
 - Actionable Insights: Generates reporting and data analytics to help librarians make informed collection development decisions
+## Installing dependencies and packages
