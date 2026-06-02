@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="card text-white bg-success mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Books</h5>
+        <p class="card-text display-6">{{ books|length }}</p>
+        <a href="{{ url_for('books') }}" class="btn btn-light btn-sm">View books</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-info mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Borrowers</h5>
+        <p class="card-text display-6">{{ borrowers|length }}</p>
+        <a href="{{ url_for('borrowers') }}" class="btn btn-light btn-sm">View borrowers</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-warning mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Active loans</h5>
+        <p class="card-text display-6">{{ active_transactions|length }}</p>
+        <a href="{{ url_for('transactions') }}" class="btn btn-light btn-sm">Manage loans</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,14 +1,42 @@
-# Integrated-Library-System
-An Integrated Library System (ILS), or Library Management System, is enterprise software that automates core library operations. It centralizes data into a single shared database, helping staff track collections and manage user accounts more efficiently.
-## Core Modules
-An ILS typically connects several distinct modules:
-- Circulation: Manages borrowing, returns, holds, and fines.
-- Cataloging: Tracks and indexes physical and digital materials using worldwide standards.
-- Acquisitions: Handles the ordering, receiving, and invoicing of new materials.
-- Serials: Tracks and manages magazine, journal, and newspaper subscriptions.
-- PAC (Online Public Access Catalog): The public-facing interface where users can search the library's inventory, check availability, and manage their personal accounts.
-### Key Benefits
-- Increased Efficiency: Automates repetitive tasks like overdue notices, renewals, and item check-ins.
-- Improved Patron Experience: Allows users to place holds, renew items, and access digital resources remotely via web portals or kiosks.
-- Actionable Insights: Generates reporting and data analytics to help librarians make informed collection development decisions
-## Installing dependencies and packages
+# Library Management System
+
+A Python command-line Library Management System with MySQL database connectivity.
+
+## Features
+- Book management: add, update, delete books
+- Borrower management: add, update, delete borrowers
+- Borrow and return books with due date tracking
+- Search books by title, author, or genre
+- Fine calculation for late returns
+- User authentication for admin access
+- Reporting for available books, borrower activity, and fines
+
+## Setup
+1. Install Python 3.10+.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Create a MySQL database and run `db_schema.sql`.
+4. Update `db.py` with your MySQL credentials, or use environment variables: `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`.
+   - Default DB config in `db.py` uses `root` / `p455word` and database `library_management`.
+5. Run the app:
+   ```bash
+   python app.py
+   ```
+
+6. Run the web UI:
+   ```bash
+   python web_app.py
+   ```
+
+## Default app login
+- username: `admin`
+- password: `admin123`
+
+## Database
+- `books` stores book details
+- `borrowers` stores borrower profiles
+- `transactions` stores borrow/return events
+- `users` stores system users and hashed passwords
+- `fines` stores fine amounts for late returns

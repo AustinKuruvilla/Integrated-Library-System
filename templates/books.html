@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card mb-4">
+      <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Books</h5>
+          <form class="d-flex" method="get" action="{{ url_for('books') }}">
+            <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ query }}">
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+              <th>Available</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in books %}
+            <tr>
+              <td>{{ book.id }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.genre }}</td>
+              <td>{{ book.available_quantity }}/{{ book.total_quantity }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="5" class="text-center">No books found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card mb-4">
+      <div class="card-header"><h5 class="mb-0">Add Book</h5></div>
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Author</label>
+            <input type="text" class="form-control" name="author" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">ISBN</label>
+            <input type="text" class="form-control" name="isbn">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Genre</label>
+            <input type="text" class="form-control" name="genre">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <input type="number" class="form-control" name="quantity" min="1" value="1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add book</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

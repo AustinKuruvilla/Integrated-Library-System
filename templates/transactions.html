@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header"><h5 class="mb-0">Active Transactions</h5></div>
+      <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Book</th>
+              <th>Borrower</th>
+              <th>Borrow Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for txn in transactions %}
+            <tr>
+              <td>{{ txn.id }}</td>
+              <td>{{ txn.title }}</td>
+              <td>{{ txn.name }}</td>
+              <td>{{ txn.borrow_date }}</td>
+              <td>{{ txn.due_date }}</td>
+              <td>{{ txn.status }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="6" class="text-center">No active transactions.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header"><h5 class="mb-0">Borrow Book</h5></div>
+      <div class="card-body">
+        <form method="post">
+          <input type="hidden" name="action" value="borrow">
+          <div class="mb-3">
+            <label class="form-label">Borrower Membership ID</label>
+            <input type="text" class="form-control" name="membership_id" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Book ID</label>
+            <input type="number" class="form-control" name="book_id" min="1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Borrow</button>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header"><h5 class="mb-0">Return Book</h5></div>
+      <div class="card-body">
+        <form method="post">
+          <input type="hidden" name="action" value="return">
+          <div class="mb-3">
+            <label class="form-label">Transaction ID</label>
+            <input type="number" class="form-control" name="transaction_id" min="1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Return</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
